@@ -5,7 +5,8 @@
 # Author Lesiba Malebana
 # ver - 1.0.0
 
-This Java Terminal App , is used to capture Civil Structural Project ,
+<!-- This Java Terminal App , is used to capture Civil Structural Project ,
 It store Project number ,type of the civil being executed,total fee paid towards the project
 update the Project ,assign a Date to the project,get project status
 For now everything is store in Memory version 2 will be stored in Database
+ -->
