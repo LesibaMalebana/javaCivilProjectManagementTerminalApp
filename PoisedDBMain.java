@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PoisedDBMain {
 
-    // Define static/global variables
+    // Define global variables
     String prjNumber;
     String prjName;
     String prjBuildingDesign;
