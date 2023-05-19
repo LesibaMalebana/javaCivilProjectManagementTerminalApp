@@ -15,27 +15,29 @@ public class PoisedDBMain {
     String prjDeadLine;
     String outstandingFee;
     double amount;
-    static Scanner userInput = new Scanner(System.in); // Camel case
+    static Scanner userInput = new Scanner(System.in); // Java scanner Variable named userInput named Camel Case
 
-    // Define main function
+    // main function
     public static void main(String[] args) {
-        Project currentProject = null;
+        Project currentProject = null; //  An empty Object to utilize later in the Code
 
         while (true) {
 
-            // Request input from the user and store the response in a variable
+            // MenuChoice is a variable that stores userInput as a String
             System.out.println("1. Create new Project\n2. Edit Existing Project\n3. Exit");
             String menuChoice = userInput.nextLine();
 
-            // Call relevant function based on user's input
+            // if statement to condition the user choice and action
             if (menuChoice.equals("1")) {
-                currentProject = createProject(); // handle if the project doesn't exsist
+                currentProject = createProject(); // handle if the project doesn't Exist
                 System.out.println(currentProject);// createProject();
             }
+            // Menu choice for condition 2
             else if (menuChoice.equals("2")) {
                 if (currentProject != null) {
 
-
+                    // If the project doesn't exist you will be requested to create so you can edit it.
+                    // This code runs for as long as Project is not created
                     while (true) {
                         // Write code to determine if the project has been completed. if project has been completed then
                         // inform user and break out of loop
@@ -84,42 +86,45 @@ public class PoisedDBMain {
             }
             else if (menuChoice.equals("5")) {
                 break;
+                // used to break out of the while loop/Stop the Loop
             }
         }
     }
 
     private static Project createProject() {
 
-        // Get input from the user
+        // Getting input from the user
         System.out.println("Enter the Project number.");
-        String prjNumber = userInput.nextLine(); // prompt the user to get Project number
+        String prjNumber = userInput.nextLine(); // Storing user Input in Variable prjNumber
         System.out.println("Enter the Project Name.");
-        String prjName = userInput.nextLine(); // prompt the user to get project name
+        String prjName = userInput.nextLine(); // Storing user Input in Variable prjName
         System.out.println("What type of building is being designed? E.g. House, apartment block or\n" + "store, etc");
-        String prjBuildingDesign = userInput.nextLine();
+        String prjBuildingDesign = userInput.nextLine(); // Storing user Input in Variable prjBuildingDesign
         System.out.println("Enter the Physical Address.");
-        String prjPhysicalAddress = userInput.nextLine();
+        String prjPhysicalAddress = userInput.nextLine(); // Storing user Input in Variable prjPhysicalAddress
         System.out.println("Enter the ERF number");
-        String prjErfNum = userInput.nextLine();
+        String prjErfNum = userInput.nextLine(); // Storing user Input in Variable prjErfNum
         System.out.println("Enter the Total fee being charged for the Project.");
-        String prjTotalFee = userInput.nextLine();
+        String prjTotalFee = userInput.nextLine(); // Storing user Input in Variable prjTotalFee
         System.out.println("The total amount paid to date.");
-        String prjTotalFeePaid = userInput.nextLine();
+        String prjTotalFeePaid = userInput.nextLine(); // Storing user Input in Variable prjTotalFeePaid
         System.out.println("Deadline for the project.");
-        String prjDeadLine = userInput.nextLine();
+        String prjDeadLine = userInput.nextLine(); // Storing user Input in Variable prjDeadLine
 
-        // Create A person object for architect, contractor and customer
+        // Objects to hold different Data Customer ,Contractor and Architect
 
         Person personArchitect = createPerson("Architecture");
         Person personContractor = createPerson("Contractor");
         Person personCustomer = createPerson("Customer");
-        // Create project object using information gathered from user and person object
 
+        // project to hold Global Variables
         Project tempProg = new Project(prjNumber, prjName, prjBuildingDesign, prjPhysicalAddress, prjErfNum, prjTotalFee, prjTotalFeePaid, prjDeadLine, personArchitect, personContractor, personCustomer);
         return tempProg;
 
     }
 
+
+    // Person Method to hold person Data
     private static Person createPerson(String personType) {
         // get input from user
         System.out.println("Enter the " + personType + " Name: ");
@@ -131,18 +136,19 @@ public class PoisedDBMain {
         System.out.println("Enter " + personType + " Physical Address: ");
         String personPhysicalAddress = userInput.nextLine();
 
-        // use this to create person objects
+        // Temporary Objects to hold Person data
         Person tempPerson = new Person(personName, personEmailAddress, personPhysicalAddress, personTelNumber);
         return tempPerson;
 
     }
 
+    // private Method to edit date
+    // restriction is applied here as is specific to certain roles only
     private static void editDueDate(Project projectObj) {
         // Get information from the user
         System.out.println("Amend the Due Date of the Project");
         String updateDueDate = userInput.nextLine();
 
-        // User setter to change the project information
         System.out.println("Due Date has been update :" + projectObj.getProjectDeadline());
         projectObj.setProjectDeadline(updateDueDate);
 
@@ -210,11 +216,7 @@ public class PoisedDBMain {
         }
 
 
-        // if project is outstanding then generate invoice
 
-        // Mark project as complete
-
-        // Write project to finalized text file
     }
 
 
